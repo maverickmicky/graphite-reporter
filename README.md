@@ -3,6 +3,7 @@
 This library provides support to record metrics in a **Java** application and export them to **Graphite**.
 
 #####Metrics library used
+
 [metrics-graphite](https://github.com/dropwizard/metrics/tree/3.2-development/metrics-graphite)
 
 [metrics-spring](https://github.com/ryantenney/metrics-spring) - only for spring based applications
