@@ -3,7 +3,7 @@ package com.maverick.metrics;
 import com.maverick.metrics.annotation.*;
 
 /**
- * Created by abhinav on 2017-02-23.
+ * Created by  on 2017-02-23.
  */
 public class AwesomeResource {
 
