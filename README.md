@@ -5,14 +5,9 @@ This library provides support to record metrics in a **Java** application and ex
 #####Metrics library used
 [metrics-graphite](https://github.com/dropwizard/metrics/tree/3.2-development/metrics-graphite)
 
-#####Usage
-Steps to use this library:
-1. Add maven dependency to this library
-2. Inject the _GraphiteTimer_ in your application
-3. Annotate the required methods with _@Timed_
-4. (Optional) Include REST resource _GraphiteReportingResource_
+#####Guice usage
 
-e.g. maven dependency:
+Add maven dependency:
 
     <dependency>
         <groupId>com.maverick.libraries</groupId>
@@ -24,19 +19,51 @@ If you are using **Guice** in your application then in your module configuration
 
     GraphiteTimer timer = Guice.createInjector(new InterceptorModule()).getInstance(GraphiteTimer.class);
 	bindInterceptor(Matchers.any(), Matchers.annotatedWith(Timed.class), timer);
+If possible then use a direct class or package matcher instead of any() matcher.
 
 annotate method:
 
     @com.maverick.metrics.annotation.Timed(name = "meterName")
     public Response someMethod(Request request) {
     
-bind resource in your ServletModule:
+bind resource in your ServletModule(Optional):
 
     @Override
     protected void configureServlets() {
         ....
         ....
         bind(GraphiteReportingResource.class);
+
+#####Spring usage
+
+Included maven dependency:
+    
+    <dependency>
+        <groupId>com.maverick.libraries</groupId>
+        <artifactId>guice-graphite-reporter</artifactId>
+        <version>0-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.ryantenney.metrics</groupId>
+        <artifactId>metrics-spring</artifactId>
+        <version>${version}</version>
+    </dependency>
+
+If you are using **Spring** in your application then extend your configuration class with SpringMetricsConfig:
+
+    @Configuration
+    public class AppConfig extends SpringMetricsConfig {
+    ....
+    ....
+    ....
+    }
+
+Annotate method:
+
+    @com.codahale.metrics.annotation.Timed(name = "metric-name", absolute = true)
+    public Response getAccount(
+
 
 #####Metrics
 You can see the metrics in **Graphite** browser under group _**metrics**_. Look for your env/machine name and then navigate to the metric name you provided in 
