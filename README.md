@@ -72,7 +72,7 @@ Annotate method:
 You can see the metrics in **Graphite** browser under group _**metrics**_. Look for your env/machine name and then navigate to the metric name you provided in 
 the annotation.
 
-If you have **Grafana** hooked up to **Graphite** server then you can view the metrics in more fancy way.
+If you have **Grafana** hooked up to **Graphite** server then you can view the metrics in a more fancy way.
 
 #### Reporting control
 You can enable/disable the reporting on the fly using the _GraphiteReportingResource_. It provides three API:
