@@ -2,13 +2,13 @@
 
 This library provides support to record metrics in a **Java** application and export them to **Graphite**.
 
-##### Metrics library used
+#### Metrics library used
 
 [metrics-graphite](https://github.com/dropwizard/metrics/tree/3.2-development/metrics-graphite)
 
 [metrics-spring](https://github.com/ryantenney/metrics-spring) - only for spring based applications
 
-##### Guice usage
+#### Guice usage
 
 Add maven dependency:
 
@@ -37,7 +37,7 @@ bind resource in your ServletModule(Optional):
         ....
         bind(GraphiteReportingResource.class);
 
-##### Spring usage
+#### Spring usage
 
 Included maven dependency:
     
@@ -68,13 +68,13 @@ Annotate method:
     public Response getAccount(
 
 
-##### Metrics
+#### Metrics
 You can see the metrics in **Graphite** browser under group _**metrics**_. Look for your env/machine name and then navigate to the metric name you provided in 
 the annotation.
 
 If you have **Grafana** hooked up to **Graphite** server then you can view the metrics in more fancy way.
 
-##### Reporting control
+#### Reporting control
 You can enable/disable the reporting on the fly using the _GraphiteReportingResource_. It provides three API:
 
 - **POST** /graphite/enable
